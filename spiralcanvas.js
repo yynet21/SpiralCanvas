@@ -62,9 +62,9 @@ function analyze(canvas, ctx, input) {
         counter++;
         //console.log(w, h, index);
     }
-    //console.log(index, array.length);
+    console.log(array.length);
     //    return "hoge";
     let output = "Hello, World!";
-    return output;
+    return input;
 }
 module.exports.analyze = analyze;
