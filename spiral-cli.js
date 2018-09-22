@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
 const Canvas = require("canvas");
-console.log("hoge222");
+console.log("expect hello.spiralcanvas", proces.argv[2], "expect input", proces.argv[3]);
 //実行部
 const SprialCanvas = require("./spiralcanvas");
 
@@ -19,6 +19,7 @@ if (process.argv.length < 4) {
 
 let img;
 const input = fs.readFileSync(process.argv[3]).toString();
+
 //画像の読み込み
 //$1はソースコード
 fs.readFile(process.argv[2], function (err, data) {
