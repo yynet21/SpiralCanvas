@@ -1,7 +1,8 @@
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
 const Canvas = require("canvas");
-const SprialCanvas = require("./js/spiralcanvas");
+//実行部
+const SprialCanvas = require("./spiralcanvas");
 
 const jsdom = new JSDOM(fs.readFileSync("index.html").toString(), { runScripts: 'outside-only' });
 let document = jsdom.window.document;
@@ -40,12 +41,12 @@ fs.readFile(process.argv[2], function (err, data) {
     }
 
     onloadImg().then(x => {
-        console.log(x);
+        //console.log(x);
         canvas.width = x.width;
         canvas.height = x.height;
-        //        let ctx = canvas.getContext("2d");
+
         ctx.drawImage(img, 0, 0);
-        console.log(canvas, input);
+        //console.log(canvas, input);
         let output = SprialCanvas.analyze(canvas, ctx, input);
         console.log(output);
 

@@ -64,7 +64,7 @@ function analyze(canvas, ctx, input) {
     }
     //console.log(index, array.length);
     //    return "hoge";
-    console.log(input, width, height);
-    return input;
+    let output = "Hello,World\n";
+    return output;
 }
 module.exports.analyze = analyze;
