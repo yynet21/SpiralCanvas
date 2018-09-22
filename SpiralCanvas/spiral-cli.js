@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
 const Canvas = require("canvas");
-const SprialCanvas = require("./js/sprialcanvas");
+const SprialCanvas = require("./js/spiralcanvas");
 
 const jsdom = new JSDOM(fs.readFileSync("index.html").toString(), { runScripts: 'outside-only' });
 let document = jsdom.window.document;
