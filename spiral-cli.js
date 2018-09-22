@@ -1,6 +1,7 @@
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
 const Canvas = require("canvas");
+console.log("hoge222");
 //実行部
 const SprialCanvas = require("./spiralcanvas");
 
@@ -19,8 +20,9 @@ if (process.argv.length < 4) {
 let img;
 const input = fs.readFileSync(process.argv[3]).toString();
 //画像の読み込み
+//$1はソースコード
 fs.readFile(process.argv[2], function (err, data) {
-
+    console.log("hoge2");
     if (err) throw err;
 
     let canvas = document.getElementById("canvas");
@@ -47,8 +49,8 @@ fs.readFile(process.argv[2], function (err, data) {
 
         ctx.drawImage(img, 0, 0);
         //console.log(canvas, input);
-        let output = SprialCanvas.analyze(canvas, ctx, input);
-        console.log(output);
+        //let output = SprialCanvas.analyze(canvas, ctx, input);
+        console.log("hoge");
 
     }).catch(function (error) {
 
@@ -65,3 +67,23 @@ fs.readFile(process.argv[2], function (err, data) {
 
 //sudo apt-get install libcairo2-dev libjpeg-dev libpango1.0-dev libgif-dev build-essential g++
 //nodejs sprial-cli.js code.bmp input
+
+/*
+const fs = require('fs');
+const { JSDOM } = require('jsdom');
+
+if (process.argv.length < 4) {
+	process.stderr.write(`Usage: node ${process.argv[1]} <file> <input>`);
+	process.exit(1);
+}
+
+const code = fs.readFileSync(process.argv[2]).toString();
+const input = process.argv[3];
+
+const htmsScript = fs.readFileSync('htms.min.js').toString();
+
+const jsdom = new JSDOM(code, { runScripts: 'outside-only' });
+jsdom.window.stdin = input;
+jsdom.window.eval(htmsScript);
+console.log(jsdom.window.htms.default);
+*/
