@@ -1,13 +1,13 @@
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
 const Canvas = require("canvas");
-console.log("expect hello.spiralcanvas", proces.argv[2], "expect input", proces.argv[3]);
+//console.log("expect hello.spiralcanvas", process.argv[2], "expect input", process.argv[3]);
 //実行部
 const SprialCanvas = require("./spiralcanvas");
 
+//console.log("hoge000");
 const jsdom = new JSDOM(fs.readFileSync("index.html").toString(), { runScripts: 'outside-only' });
 let document = jsdom.window.document;
-
 
 if (process.argv.length < 4) {
     process.stderr.write(`Usage: node ${process.argv[1]} <file> <input>`);
@@ -19,11 +19,14 @@ if (process.argv.length < 4) {
 
 let img;
 const input = fs.readFileSync(process.argv[3]).toString();
+//console.log("ho");
 
 //画像の読み込み
 //$1はソースコード
+const st = fs.readFileSync(process.argv[2]).toString();
+//console.log(st);
 fs.readFile(process.argv[2], function (err, data) {
-    console.log("hoge2");
+    //    console.log(data);
     if (err) throw err;
 
     let canvas = document.getElementById("canvas");
@@ -50,8 +53,8 @@ fs.readFile(process.argv[2], function (err, data) {
 
         ctx.drawImage(img, 0, 0);
         //console.log(canvas, input);
-        //let output = SprialCanvas.analyze(canvas, ctx, input);
-        console.log("hoge");
+        let output = SprialCanvas.analyze(canvas, ctx, input);
+        console.log(output);
 
     }).catch(function (error) {
 
